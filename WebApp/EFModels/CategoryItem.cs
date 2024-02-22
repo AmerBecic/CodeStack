@@ -14,6 +14,8 @@ namespace WebApp.EFModels
         [StringLength(200, MinimumLength = 2)]
         public string Title { get; set; }
 
+        public string Description { get; set; }
+
         public int CategoryId { get; set; }
 
         public int MediaTypeId { get; set; }

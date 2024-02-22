@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Interfaces;
 
 namespace WebApp.EFModels
 {
-    public class MediaType
+    public class MediaType : IPrimaryProperties
     {
         public int Id { get; set; }
 

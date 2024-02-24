@@ -27,5 +27,8 @@ namespace WebApp.EFModels
 
         public DateTime DateItemReleased { get; set; }
 
+        [NotMapped] //Migrations ignore this
+        public int ContentId { get; set; }
+
     }
 }

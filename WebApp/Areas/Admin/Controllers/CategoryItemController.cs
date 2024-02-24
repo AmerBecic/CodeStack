@@ -25,15 +25,21 @@ namespace WebApp.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int categoryId)
         {
             List<CategoryItem> listOfItems = await (from catItem in _context.CategoryItem
+                                                    join contentItem in _context.Content
+                                                    on catItem.Id equals contentItem.CategoryItem.Id
+                                                    into groupJoin
+                                                    from subContent in groupJoin.DefaultIfEmpty()
                                                     where catItem.CategoryId == categoryId
                                                     select new CategoryItem
                                                     {
                                                         Id = catItem.Id,
                                                         Title = catItem.Title,
                                                         Description = catItem.Description,
-                                                        CategoryId = catItem.CategoryId,
+                                                        CategoryId = categoryId,
                                                         MediaTypeId = catItem.MediaTypeId,
-                                                        DateItemReleased = catItem.DateItemReleased
+                                                        DateItemReleased = catItem.DateItemReleased,
+                                                        ContentId = (subContent != null) ? subContent.Id : 0  //0 is so if contentId is empty then the action will return user to Index RazorView
+
                                                     }).ToListAsync();
 
             ViewBag.CategoryId = categoryId;

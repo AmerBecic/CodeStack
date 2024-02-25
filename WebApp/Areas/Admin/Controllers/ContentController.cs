@@ -57,7 +57,7 @@ namespace WebApp.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var content = await _context.Content.FirstOrDefaultAsync(item => item.CategoryItem.Id == categoryItemId);
+            var content = await _context.Content.SingleOrDefaultAsync(item => item.CategoryItem.Id == categoryItemId);
 
             content.CategoryId = categoryId;
 

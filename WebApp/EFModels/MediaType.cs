@@ -19,7 +19,7 @@ namespace WebApp.EFModels
         [Required]
         public string ThumbnailImagePath { get; set; }
 
-        [ForeignKey("CategoryId")]
-        public ICollection<CategoryItem> CategoryItems { get; set; }
+        [ForeignKey("MediaTypeId")]
+        public virtual ICollection<CategoryItem> CategoryItems { get; set; }
     }
 }

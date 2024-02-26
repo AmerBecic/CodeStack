@@ -10,6 +10,8 @@ namespace WebApp.EFModels
 {
     public class CategoryItem
     {
+        private DateTime _releaseDate = DateTime.MinValue;
+
         public int Id { get; set; }
 
         [Required]
@@ -25,7 +27,18 @@ namespace WebApp.EFModels
         [NotMapped]
         public virtual ICollection<SelectListItem> MediaTypes { get; set; }
 
-        public DateTime DateItemReleased { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime DateItemReleased
+        {
+            get
+            {
+                return (_releaseDate == DateTime.MinValue) ? DateTime.Now : _releaseDate;
+            }
+            set
+            {
+                _releaseDate = value;
+            }
+        }
 
         [NotMapped] //Migrations ignore this
         public int ContentId { get; set; }

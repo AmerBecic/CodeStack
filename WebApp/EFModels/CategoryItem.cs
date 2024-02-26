@@ -22,12 +22,15 @@ namespace WebApp.EFModels
 
         public int CategoryId { get; set; }
 
+        [Required(ErrorMessage ="Please select an item from the {0} dropdown list")]
+        [Display(Name ="Media Type")]
         public int MediaTypeId { get; set; }
 
         [NotMapped]
         public virtual ICollection<SelectListItem> MediaTypes { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "Release Date")]
         public DateTime DateItemReleased
         {
             get

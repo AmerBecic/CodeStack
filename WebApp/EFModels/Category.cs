@@ -18,6 +18,7 @@ namespace WebApp.EFModels
         public string Description { get; set; }
 
         [Required]
+        [Display(Name ="Thumbnail Image Path")]
         public string ThumbnailImagePath { get; set; }
 
         [ForeignKey("CategoryId")]

@@ -1,7 +1,23 @@
 ﻿$(function () {
+
+    $("#AcceptUserAgreement").click(onAcceptUserAgreement);
+
+    $("#UserRegistrationModal button[name='register']").prop('disabled', true);
+
+    function onAcceptUserAgreement() {
+        if ($(this).is(":checked")) {
+            $("#UserRegistrationModal button[name='register']").prop('disabled', false);
+        }
+        else {
+            $("#UserRegistrationModal button[name='register']").prop('disabled', true);
+        }
+    }
+
     var registerButton = $("#UserRegistrationModal button[name='register']").click(onUserRegisterClick);
 
     function onUserRegisterClick() {
+
+        console.log(document.querySelector('#AcceptUserAgreement').checked);
 
         var url = "UserAuth/Register"
 
@@ -52,6 +68,9 @@
                     $(form).removeData("validator");
                     $(form).removeData("unobtrusiveValidation");
                     $.validator.unobtrusive.parse(form);
+
+                    $("#AcceptUserAgreement").click(onAcceptUserAgreement);
+                    $("#UserRegistrationModal button[name='register']").prop('disabled', true);
                 }
                 else {
                     location.href = 'Home/Index';

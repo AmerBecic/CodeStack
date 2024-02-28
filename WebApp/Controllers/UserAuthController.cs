@@ -98,8 +98,10 @@ namespace WebApp.Controllers
 
                     return PartialView("_UserRegistrationPartial", registrationModel);
                 }
-
-                ModelState.AddModelError(string.Empty, "Registration attempt failed");
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Registration attempt failed");
+                }           
             }
 
             return PartialView("_UserRegistrationPartial", registrationModel);

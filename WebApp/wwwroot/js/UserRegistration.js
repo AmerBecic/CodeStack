@@ -40,14 +40,14 @@
 
                 var parsed = $.parseHTML(data);
 
-                var hasErrors = $(parsed).find("input[name='LoginInValid']").val() == "true";
+                var hasErrors = $(parsed).find("input[name='RegistrationInValid']").val() == "true";
 
                 if (hasErrors == true) {
                     $("#UserRegistrationModal").html(data);
 
-                    loginButton = $("#UserRegistrationModal button[name='register']").click(onUserLoginClick);
+                    registerButton = $("#UserRegistrationModal button[name='register']").click(onUserRegisterClick);
 
-                    var form = $("#UserRegistrationModal");
+                    var form = $("#UserRegistrationForm");
 
                     $(form).removeData("validator");
                     $(form).removeData("unobtrusiveValidation");

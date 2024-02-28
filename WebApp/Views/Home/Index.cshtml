@@ -15,7 +15,8 @@
     <partial name="_UserRegistrationPartial" />
 </div>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        <script src="~/js/UserLogin.js"></script>
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/UserLogin.js"></script>
+    <script src="~/js/UserRegistration.js"></script>
+}

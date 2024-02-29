@@ -17,8 +17,6 @@
 
     function onUserRegisterClick() {
 
-        console.log(document.querySelector('#AcceptUserAgreement').checked);
-
         var url = "UserAuth/Register"
 
         var antiForgeryToken = $("#UserRegistrationModal input[name='__RequestVerificationToken']").val();

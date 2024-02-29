@@ -28,24 +28,18 @@
             url: url,
             success: (data) => {
                 if (data == true) {
-                    var errorHTML = '<div class="alert alert-warning alert-dismissible fade show" role="alert">' +
-                        '<strong>Invalid Email</strong><br>This Email address has already been registered' +
-                        '<button type ="button" class="close" data-dismiss="alert" aria-label="Close"' +
-                        '<span aria-hidden="true">&times;</span>' +
-                        '</button>' +
-                        '</div>';
-
-                    $("#alert_placeholder").html(errorHTML);
-
-                    //var modalBody = $(".modal-body");
-
-                    //modalBody.prepend(errorHTML);
+                    ShowAlert("#alert_placeholder", "warning", "Invalid Email", "This Email address has already been registered");
                 }
                 else {
-                    $("#alert_placeholder").html("");
+                    CloseAlert("#alert_placeholder");
                 }
             },
             error: (xhr, ajaxOptions, thrownError) => {
+
+                var errorText = "Status:" + xhr.status + " - " + xhr.statusText;
+
+                ShowAlert("#alert_placeholder", "danger", "Error!", errorText);
+
                 console.error(thrownError + "/r/n" + xhr.statusText + "/r/n" + xhr.responseText);
             }
         });
@@ -117,6 +111,11 @@
             },
 
             error: function (xhr, ajaxOptions, thrownError) {
+
+                var errorText = "Status:" + xhr.status + " - " + xhr.statusText;
+
+                ShowAlert("#alert_placeholder", "danger", "Error!", errorText);
+
                 console.error(thrownError + "/r/n" + xhr.statusText + "/r/n" + xhr.responseText);
             }
         });

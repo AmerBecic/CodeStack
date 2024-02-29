@@ -101,7 +101,7 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Registration attempt failed");
+                    AddErrorsToModelState(result);
                 }           
             }
 
@@ -114,6 +114,14 @@ namespace WebApp.Controllers
             bool userNameExists = await _context.Users.AnyAsync(u => u.UserName.ToUpper() == userName.ToUpper());
 
             return userNameExists;
+        }
+
+        private void AddErrorsToModelState(IdentityResult result)
+        {
+            foreach(var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
         }
     }
 }

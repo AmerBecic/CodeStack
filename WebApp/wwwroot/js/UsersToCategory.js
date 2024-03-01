@@ -2,8 +2,6 @@
 
     $("#SaveSelectedUsers").prop('disabled', true);
 
-
-
     $('select').on('change', () => {
 
         var selectedCategoryId = $('#CategoryId').find(":selected").val();
@@ -47,9 +45,7 @@
 
         var selectedUsers = [];
 
-        $("#SaveSelectedUsers").prop('disabled', true);
-        $("input[type=checkbox]").prop("disabled", true);
-        $('select').prop('disabled', true);
+        DisableControls();
 
         $(".progress").show("fade");
 
@@ -79,28 +75,38 @@
                     $(".progress").hide("fade", function () {
 
                         $(".alert-success").fadeTo(2000, 500).slideUp(500, function () {
-                            $("#SaveSelectedUsers").prop('disabled', false);
-                            $("input[type=checkbox]").prop("disabled", false);
-                            $('select').prop('disabled', false);
+
+                            EnableControls();
                         });
 
                     });
 
                 },
                 error: (xhr, ajaxOptions, thrownError) => {
-                    var errorText = "Status:" + xhr.status + " - " + xhr.statusText;
+                    $(".progress").hide("fade", function () {
+                        var errorText = "Status:" + xhr.status + " - " + xhr.statusText;
 
-                    ShowAlert("#alert_placeholder", "danger", "Error!", errorText);
+                        ShowAlert("#alert_placeholder", "danger", "Error!", errorText);
 
-                    console.error(thrownError + "/r/n" + xhr.statusText + "/r/n" + xhr.responseText);
+                        console.error(thrownError + "/r/n" + xhr.statusText + "/r/n" + xhr.responseText);
 
-                    $("#SaveSelectedUsers").prop('disabled', false);
-                    $("input[type=checkbox]").prop("disabled", false);
-                    $('select').prop('disabled', false);
+                        EnableControls();
+                    });
+               
                 }
             }
         );
+        function DisableControls() {
+            $("#SaveSelectedUsers").prop('disabled', true);
+            $("input[type=checkbox]").prop("disabled", true);
+            $('select').prop('disabled', true);
+        }
 
+        function EnableControls() {
+            $("#SaveSelectedUsers").prop('disabled', false);
+            $("input[type=checkbox]").prop("disabled", false);
+            $('select').prop('disabled', false);
+        }
 
     });
 

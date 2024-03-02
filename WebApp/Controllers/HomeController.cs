@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Data;
+using WebApp.EFModels;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -47,10 +48,35 @@ namespace WebApp.Controllers
                     categoryDetailsModel.CategoryItemsByCategoryModels = categoryItemsByCategoryModel;
                 }
             }
+            else
+            {
+                var categories = await GetCategoriesWithContent();
+
+                categoryDetailsModel.Categories = categories;
+            }
 
             return View(categoryDetailsModel);
         }
 
+
+        private async Task<List<Category>> GetCategoriesWithContent()
+        {
+            var categoriesWithContent = await (from cat in _context.Category
+                                         join catItem in _context.CategoryItem
+                                         on cat.Id equals catItem.CategoryId
+                                         join content in _context.Content
+                                         on catItem.Id equals content.CategoryItem.Id
+                                         select new Category
+                                         {
+                                             Id = cat.Id,
+                                             Title = cat.Title,
+                                             Description = cat.Description,
+                                             ThumbnailImagePath = cat.ThumbnailImagePath
+                                         }).Distinct().ToListAsync();
+
+            return categoriesWithContent;
+
+        }
         private IEnumerable<CategoryItemsByCategoryModel> GroupCategoryItemsByCategory(IEnumerable<CategoryItemDetailsModel> categoryItemDetailsModels)
         {
             var groupedItems = from item in categoryItemDetailsModels

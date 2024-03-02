@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebApp.EFModels.Category>
+﻿@using WebApp.EFModels
+
+@model IEnumerable<Category>
 
 <div class="hero section">
     <img class="img-fluid" src="~/assets/HeroImage.jpeg" />
@@ -6,4 +8,35 @@
         <h2>Learn Software Development at <strong>CodeStack</strong></h2>
         <a id="HeroRegisterButton" class="btn btn-outline-info btn-lg text-light hero-register-button">Register</a>
     </div>
+</div>
+
+<hr class="section-divider"/>
+
+<div class="courses section">
+    <h3 class="section-header">Courses</h3>
+    @{
+        var countRows = Model.Count() / 4;
+        var catList = new List<Category>();
+    }
+    @for (int i = 0; i <= countRows; ++i)
+    {
+        catList = Model.Skip(i * 4).Take(4).ToList();
+
+        <div class="row mt-3">
+            @foreach (Category category in catList)
+            {
+                <div class="col-md-3">
+                    <a href="#" class="text-dark">
+                        <div class="card">
+                            <img class="img-thumbnail" src="@category.ThumbnailImagePath" />
+                            <div class="card-body">
+                                <h5 class="card-title">@category.Title</h5>
+                                <p class="card-text">@category.Description</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
 </div>

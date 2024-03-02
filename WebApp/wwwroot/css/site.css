@@ -97,6 +97,9 @@ body {
 .hero {
     position: relative;
 }
+.hero img {
+    margin: 30px 0;
+}
 
 .hero-heading {
     position: absolute;
@@ -121,6 +124,24 @@ body {
 .hero-register-button {
     font-size: .7rem;
     cursor: pointer;
+}
+
+.section-divider {
+    height: 1px;
+    background-color: rgb(82, 164, 185);
+}
+.section {
+    margin-bottom: 80px;
+}
+
+.section-header {
+    padding-top: 80px;
+    color: rgb(82, 164, 185);
+}
+
+a:hover .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 @media screen and (min-width: 700px) {

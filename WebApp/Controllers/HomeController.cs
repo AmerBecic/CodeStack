@@ -58,7 +58,7 @@ namespace WebApp.Controllers
                                select new CategoryItemsByCategoryModel
                                {
                                    CategoryId = g.Key,
-                                   Title = g.Select(c => c.CategoryItemTitle).FirstOrDefault(),
+                                   Title = g.Select(c => c.CategoryTitle).FirstOrDefault(),
                                    CategoryItems = g
                                };
 

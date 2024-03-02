@@ -93,3 +93,63 @@ body {
     top: 0;
     width: 100%;
 }
+
+.hero {
+    position: relative;
+}
+
+.hero-heading {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    width: 180px;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero-heading h2 {
+    color: white;
+    font-size: .8rem;
+}
+
+.hero-register-button {
+    font-size: .7rem;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 700px) {
+    .hero-heading {
+        width: 350px;
+        height: 180px;
+    }
+
+        .hero-heading h2 {
+            font-size: 2rem;
+        }
+
+    .hero-register-button {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (min-width: 800px){
+    .hero-heading {
+        width: 600px;
+        height: 200px;
+        padding: 20px;
+    }
+
+    .hero-heading h2 {
+        font-size: 2rem;
+    }
+
+    .hero-register-button {
+        font-size: 1rem;
+    }
+}

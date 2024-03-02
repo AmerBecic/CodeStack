@@ -6,14 +6,27 @@
 
 @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "admin"))
 {
-<li class="nav-item dropdown show">
-    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Admin</a>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
-        <a class="dropdown-item" asp-area="Admin" asp-controller="UsersToCategory" asp-action="Index">User Categories</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-area="Admin" asp-controller="MediaType" asp-action="Index">Media Types</a>
-    </div>
+    <li class="nav-item dropdown show">
+        <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Admin</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="UsersToCategory" asp-action="Index">User Categories</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="MediaType" asp-action="Index">Media Types</a>
+        </div>
 
-</li>
+    </li>
+}
+
+else if(!SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="#Courses">Courses</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="#Contact">Contact Us</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="#About">About Us</a>
+    </li>
 }

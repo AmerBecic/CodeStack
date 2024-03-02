@@ -28,7 +28,13 @@ a {
 -------------------------------------------------- */
 html {
   font-size: 14px;
+  scroll-behavior: smooth;
 }
+
+.main-default {
+    margin-top: 70px;
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -143,6 +149,16 @@ a:hover .card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: box-shadow 0.3s ease-in-out;
 }
+
+.arrow-icon-back-to-top {
+    height: 2rem;
+    transform: rotate(180deg);
+    position: absolute;
+    right: 20rem;
+    bottom: 5.5rem;
+    cursor: pointer;
+}
+
 
 @media screen and (min-width: 700px) {
     .hero-heading {

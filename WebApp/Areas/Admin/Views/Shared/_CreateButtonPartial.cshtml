@@ -1,0 +1,16 @@
+﻿@model int
+
+@{
+    if (Model == 0) /*if nothing is passed to model then this is by default 0*/
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-outline-info btn-sm"><i class="fa-solid fa-plus mr-2"></i>Create New</a>
+        </p>
+    }
+    else
+    {
+<p>
+    <a asp-action="Create" asp-route-categoryId="@Model" class="btn btn-outline-info btn-sm"><i class="fa-solid fa-plus mr-2"></i>Create New</a>
+</p>
+    }
+}

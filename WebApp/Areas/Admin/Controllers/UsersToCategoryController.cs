@@ -16,9 +16,12 @@ namespace WebApp.Areas.Admin.Controllers
     public class UsersToCategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public UsersToCategoryController(ApplicationDbContext context)
+        private readonly IDataFunctions _dataFunctions;
+
+        public UsersToCategoryController(ApplicationDbContext context, IDataFunctions dataFunctions)
         {
             _context = context;
+            _dataFunctions = dataFunctions;
         }
 
         [HttpGet]
@@ -47,29 +50,16 @@ namespace WebApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveSelectedUsers([Bind("CategoryId, UsersSelected")] UsersCategoryListModel usersToCategory)
         {
-            var usersSelectedForCategoryToAdd = await GetUsersForCategoryToAdd(usersToCategory);
+            List<UserCategory> usersSelectedForCategoryToAdd = null;
+
+            if(usersToCategory.UsersSelected != null)
+            {
+                usersSelectedForCategoryToAdd = await GetUsersForCategoryToAdd(usersToCategory);
+            }
 
             var usersSelectedForCategoryToDelete = await GetUsersForCategoryToDelete(usersToCategory.CategoryId);
-            using (var dbContextTransaction = await _context.Database.BeginTransactionAsync())
-            {
-                try
-                {
-                    _context.RemoveRange(usersSelectedForCategoryToDelete);
-                    await _context.SaveChangesAsync();
 
-                    if (usersSelectedForCategoryToAdd != null)
-                    {
-                        _context.AddRange(usersSelectedForCategoryToAdd);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    await dbContextTransaction.CommitAsync();
-                }
-                catch (Exception)
-                {
-                    await dbContextTransaction.DisposeAsync();
-                }
-            }
+            await _dataFunctions.UpdateUserCategoryEntityAsync(usersSelectedForCategoryToDelete, usersSelectedForCategoryToAdd);
 
             usersToCategory.Users = await GetAllUsers();
 

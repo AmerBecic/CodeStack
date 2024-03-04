@@ -1,5 +1,15 @@
 ﻿$(function () {
 
+    $("#UserRegistrationModal").on('hidden.bs.modal', function (e) {
+        $("#UserRegistrationModal input[name='CategoryId']").val('0');
+    });
+
+    $('.register-link').click(function () {
+        $("#UserRegistrationModal input[name='CategoryId']").val($(this).attr('data-categoryId'));
+
+        $('#UserRegistrationModal').modal("show");
+    });
+
     $("#AcceptUserAgreement").click(onAcceptUserAgreement);
 
     $("#UserRegistrationModal button[name='register']").prop('disabled', true);
@@ -65,6 +75,7 @@
         var address2 = $("#UserRegistrationModal input[name='Address2']").val();
         var postCode = $("#UserRegistrationModal input[name='PostCode']").val();
         var phoneNumber = $("#UserRegistrationModal input[name='PhoneNumber']").val();
+        var categoryId = $("#UserRegistrationModal input[name='CategoryId']").val();
         var acceptUserAgreement = $("#UserLoginModal input[name='AcceptUserAgreement']").prop('checked');
 
         var userInput = {
@@ -78,6 +89,7 @@
             Address2: address2,
             PostCode: postCode,
             PhoneNumber: phoneNumber,
+            CategoryId: categoryId,
             AcceptUserAgreement: acceptUserAgreement
         };
 

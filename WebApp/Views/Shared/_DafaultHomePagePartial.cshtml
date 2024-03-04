@@ -7,7 +7,7 @@
     <img class="img-fluid" src="~/assets/HeroImage.jpeg" />
     <div class="hero-heading">
         <h2>Learn Software Development at <strong>CodeStack</strong></h2>
-        <a id="HeroRegisterButton" class="btn btn-outline-info btn-lg text-light hero-register-button">Register</a>
+        <a id="HeroRegisterButton" class="btn btn-outline-info btn-lg text-light hero-register-button" data-toggle="modal" data-target="#UserRegistrationModal">Register</a>
     </div>
 </div>
 
@@ -29,7 +29,7 @@
                 @foreach (Category category in catList)
                 {
                     <div class="col-md-3">
-                        <a href="#" class="text-dark">
+                        <a href="#" class="register-link text-dark" data-categoryId="@category.Id">
                             <div class="card">
                                 <img class="img-thumbnail" src="@category.ThumbnailImagePath" />
                                 <div class="card-body">

@@ -7,6 +7,12 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.nav-item:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.6rem;
+    text-decoration-color: #52a4b9;
+    text-decoration-thickness: 0.1rem;
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;

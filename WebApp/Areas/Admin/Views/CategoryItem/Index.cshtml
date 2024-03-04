@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Category Items</h1>
 
 <partial name="_CreateButtonPartial" model="@ViewBag.CategoryId"/>
 <table class="table">
@@ -15,9 +15,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MediaTypeId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateItemReleased)
@@ -33,9 +30,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MediaTypeId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateItemReleased)

@@ -1,4 +1,4 @@
-# CodeStack
+<img src="\WebApp\wwwroot\assets\logo_README.png" />
 
 This is .Net 5 Web Application demo for programming Courses.
 

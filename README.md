@@ -1,5 +1,7 @@
-<img src="\WebApp\wwwroot\assets\logo_README.png" />
-
+<p align="center"><img src="\WebApp\wwwroot\assets\logo_README.png" /> </p>
+<br/>
+<br/>
+<br/>
 This is .Net 5 Web Application demo for programming Courses.
 
 ## Description

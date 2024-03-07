@@ -48,7 +48,7 @@
 
                 var errorText = "Status:" + xhr.status + " - " + xhr.statusText;
 
-                ShowAlert("#alert_placeholder", "danger", "Error!", errorText);
+                /*ShowAlert("#alert_placeholder", "danger", "Error!", errorText);*/
 
                 console.error(thrownError + "/r/n" + xhr.statusText + "/r/n" + xhr.responseText);
             }

@@ -7,20 +7,6 @@
 
 This is .Net 5 Web Application demo for programming Courses.
 
-<br/>
-
-<li>Create your own user, or use already made non-Admin user: </li>
-<br/>
-UserName: guest@guest.com 
-<br/>
-Password: Guest.1
-<br/>
-<br/>
-<li> Contact Creator to access Admin user! </li>
-<br/>
-<br/>
-Visit this link for Live version of the app: https://codestackdev.azurewebsites.net/
-
 ## Description
 
 Again this is a demo, with MVP bulding style. <br/>
